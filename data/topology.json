@@ -1,0 +1,93 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "name": "XRV9k-1"
+    },
+    {
+      "id": 2,
+      "name": "XRV9k-2"
+    },
+    {
+      "id": 3,
+      "name": "XRV9k-3"
+    },
+    {
+      "id": 4,
+      "name": "XRV9k-4"
+    },
+    {
+      "id": 5,
+      "name": "XRV9k-5"
+    },
+    {
+      "id": 6,
+      "name": "XRV9k-6"
+    },
+    {
+      "id": 7,
+      "name": "XRV9k-7"
+    },
+    {
+      "id": 8,
+      "name": "XRV9k-8"
+    },
+    {
+      "id": 9,
+      "name": "XRV9k-9"
+    },
+    {
+      "id": 10,
+      "name": "XRV9k-10"
+    }
+  ],
+  "links": [
+
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 1,
+      "target": 5
+    },
+    {
+      "source": 1,
+      "target": 6
+    },
+
+    {
+      "source": 2,
+      "target": 3
+    },
+            {
+      "source": 2,
+      "target": 7
+    }
+    ,
+
+    {
+      "source": 3,
+      "target": 4
+    },
+     {
+      "source": 8,
+      "target": 3
+    }
+    ,
+    {
+      "source": 4,
+      "target": 5
+    }
+    ,
+
+    {
+      "source": 4,
+      "target": 9
+    },
+    {
+      "source": 5,
+      "target": 10
+    }
+  ]
+}

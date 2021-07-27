@@ -13,6 +13,8 @@ venv is a virtual environment for testing the app.
 ----------------------------------------
 
 Things To Do:
-- Use our own sample data to create our own network
+
+! DEBUG createHTML function in vis_network.py - error occurs when trying to access source/target in json file
+
 - Outline the process for creating this project (to be used in the presentation)
 - Improve the project as we go along

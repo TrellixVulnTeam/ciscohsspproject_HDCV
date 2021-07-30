@@ -16,10 +16,13 @@ def createHTML(path):
 
     elif path.endswith('.json'):
         df = pd.read_json(path)
-        G = nx.from_pandas_edgelist(df, source='source', target='target') # error when trying to access source/target in json
+
+        # error when trying to access source/target in json
+        G = nx.from_pandas_edgelist(df, source=[d.get('source') for d in df.links], target=[d.get('target') for d in df.links])
+        
         net = Network(notebook=True)
         net.from_nx(G)
         net.show('topology.html')
 
 if __name__ == "__main__":
-    createHTML(EXAMPLE_PATH)
+    createHTML(DATA_PATH)

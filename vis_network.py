@@ -25,6 +25,10 @@ def createHTML(path):
         df = pd.read_json(path) # creates a dataframe but source/target stored in dictionaries
         source=[d.get('source') for d in df.links]
         target=[d.get('target') for d in df.links]
+        # replace router IDs with router names
+        for d in df.nodes:
+            replace_id_with_name(source, d)
+            replace_id_with_name(target, d)
         # create a new dataframe and access the source/target data
         dataf = pd.DataFrame({"Source": source, "Target":target})
         G = nx.from_pandas_edgelist(dataf, source='Source', target='Target')
@@ -34,6 +38,14 @@ def createHTML(path):
     net = Network(notebook=True)
     net.from_nx(G)
     net.show(filename)
+
+
+
+# function to replace router IDs with router names
+def replace_id_with_name(id_list, name_dict):
+    for index, router_id in enumerate(id_list):
+        if router_id == name_dict.get('id'):
+            id_list[index] = name_dict.get('name')
 
 
 

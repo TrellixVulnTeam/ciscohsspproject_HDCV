@@ -1,6 +1,7 @@
 import networkx as nx
 import pandas as pd
 from pyvis.network import Network
+import random
 
 
 
@@ -29,13 +30,26 @@ def createHTML(path):
         for d in df.nodes:
             replace_id_with_name(source, d)
             replace_id_with_name(target, d)
+
+        # randomly assign green or red to routers to represent their status
+        # green = router running, red = router down
+        colors = {}
+        for router in source:
+            random_number = random.randint(1, 4)
+            if random_number == 3:
+                colors[router] = "red"
+            else:
+                colors[router] = "green"
+
         # create a new dataframe and access the source/target data
-        dataf = pd.DataFrame({"Source": source, "Target":target})
+        dataf = pd.DataFrame({'Source': source, 'Target':target})
+        # create the graph and add the colors attribute
         G = nx.from_pandas_edgelist(dataf, source='Source', target='Target')
+        nx.set_node_attributes(G, colors, 'color')
         filename = 'topology.html'
 
     # create the network topology and store in an html file (added to current directory)
-    net = Network(notebook=True)
+    net = Network(width='1440px', height='700px', notebook=True)
     net.from_nx(G)
     net.show(filename)
 
